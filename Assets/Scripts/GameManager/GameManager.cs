@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,10 +12,13 @@ public class GameManager : MonoBehaviour
     public GameObject text2;            // Text 2
     public GameObject instructionText;  // Text hướng dẫn
 
+    [Header("Game Over UI")]
+    public GameObject gameOverObject;   // Sprite hoặc UI hiển thị "GAME OVER"
+
     private bool isGameStarted = false;
-    private Vector3 startPosition;      // ✅ Lưu vị trí ban đầu của nhân vật
-    private Quaternion startRotation;   // ✅ Lưu góc xoay ban đầu của nhân vật
-    private bool startPositionSaved = false; // ✅ Đảm bảo chỉ lưu vị trí ban đầu một lần
+    private Vector3 startPosition;      // Lưu vị trí ban đầu của nhân vật
+    private Quaternion startRotation;   // Lưu góc xoay ban đầu của nhân vật
+    private bool startPositionSaved = false; // Đảm bảo chỉ lưu vị trí ban đầu một lần
 
     void Start()
     {
@@ -26,18 +30,14 @@ public class GameManager : MonoBehaviour
 
         if (player != null)
         {
-            // ✅ Chỉ lưu vị trí và góc xoay ban đầu một lần duy nhất
+            // Chỉ lưu vị trí và góc xoay ban đầu một lần duy nhất
             if (!startPositionSaved)
             {
                 startPosition = player.transform.position;
                 startRotation = player.transform.rotation;
                 startPositionSaved = true;
-                Debug.Log($"GameManager Start: LƯU VỊ TRÍ BAN ĐẦU của player = {startPosition}");
-                Debug.Log($"GameManager Start: LƯU GÓC XOAY BAN ĐẦU của player = {startRotation}");
-            }
-            else
-            {
-                Debug.Log($"GameManager Start: Vị trí ban đầu đã được lưu = {startPosition}");
+                Debug.Log($"GameManager Start: Lưu vị trí ban đầu = {startPosition}");
+                Debug.Log($"GameManager Start: Lưu góc xoay ban đầu = {startRotation}");
             }
             player.SetActive(false);
         }
@@ -51,9 +51,13 @@ public class GameManager : MonoBehaviour
             text2.SetActive(true);
         if (instructionText != null)
             instructionText.SetActive(true);
+
+        // Ẩn GameOver lúc đầu
+        if (gameOverObject != null)
+            gameOverObject.SetActive(false);
     }
 
-    // 🔹 Khi nhấn nút Play
+    // Khi nhấn nút Play
     public void StartGame()
     {
         Debug.Log("Bắt đầu hoặc chơi lại từ đầu!");
@@ -74,54 +78,37 @@ public class GameManager : MonoBehaviour
         if (player != null)
         {
             player.SetActive(true);
-            Debug.Log($"StartGame: Player được bật, vị trí hiện tại = {player.transform.position}");
-            
-            // ✅ Đảm bảo player ở vị trí ban đầu
             ResetPlayerToStart();
         }
+
+        // Ẩn sprite GameOver nếu đang hiện
+        if (gameOverObject != null)
+            gameOverObject.SetActive(false);
 
         Time.timeScale = 1f;
     }
 
-    // ✅ Hàm riêng để reset player về trạng thái ban đầu
+    // Reset player về vị trí ban đầu
     private void ResetPlayerToStart()
     {
         if (player != null)
         {
-            Debug.Log($"ResetPlayerToStart: Bắt đầu reset player");
-            Debug.Log($"ResetPlayerToStart: Vị trí hiện tại = {player.transform.position}");
-            Debug.Log($"ResetPlayerToStart: VỊ TRÍ BAN ĐẦU ĐƯỢC LƯU = {startPosition}");
-            
-            // Force reset position và rotation về vị trí ban đầu
             player.transform.position = startPosition;
             player.transform.rotation = startRotation;
-            
-            // Reset Rigidbody2D nếu có
+
             Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
                 rb.velocity = Vector2.zero;
                 rb.angularVelocity = 0f;
                 rb.rotation = 0f;
-                Debug.Log("ResetPlayerToStart: Đã reset Rigidbody2D");
             }
-            
-            Debug.Log($"ResetPlayerToStart: SAU KHI RESET, vị trí = {player.transform.position}");
-            Debug.Log($"ResetPlayerToStart: SAU KHI RESET, góc xoay = {player.transform.rotation}");
-            
-            // Kiểm tra xem có reset thành công không
-            if (Vector3.Distance(player.transform.position, startPosition) < 0.01f)
-            {
-                Debug.Log("✅ ResetPlayerToStart: THÀNH CÔNG - Player đã về đúng vị trí ban đầu!");
-            }
-            else
-            {
-                Debug.LogError($"❌ ResetPlayerToStart: THẤT BẠI - Player không về đúng vị trí ban đầu! Khoảng cách = {Vector3.Distance(player.transform.position, startPosition)}");
-            }
+
+            Debug.Log("ResetPlayerToStart: Player đã được reset về vị trí ban đầu");
         }
     }
 
-    // ✅ Hàm để manually set lại vị trí ban đầu (nếu cần)
+    // Set lại vị trí ban đầu thủ công (nếu cần)
     public void SetNewStartPosition()
     {
         if (player != null)
@@ -132,7 +119,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // 🔹 Khi bị lật ngược hoặc chạm đá
+    // Khi bị lật ngược hoặc chạm đá
     public void GameOver()
     {
         Debug.Log("Game Over! Quay lại menu.");
@@ -150,25 +137,33 @@ public class GameManager : MonoBehaviour
             text2.SetActive(true);
         if (instructionText != null)
             instructionText.SetActive(true);
-        
+
+        // Hiện sprite GameOver
+        if (gameOverObject != null)
+            gameOverObject.SetActive(true);
+
         if (player != null)
         {
-            // ✅ Reset player về trạng thái ban đầu
             ResetPlayerToStart();
             player.SetActive(false);
-            Debug.Log("GameOver: Player đã được tắt");
         }
     }
 
-    // ✅ Thêm hàm này để GameManager xử lý va chạm đá trực tiếp
+    // Xử lý va chạm trực tiếp nếu Player có collider
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Kiểm tra nếu Player va vào đá (tag hoặc tên chứa "rock")
         if (collision.gameObject.CompareTag("Rock") ||
             collision.gameObject.name.ToLower().Contains("rock"))
         {
             Debug.Log("Player chạm đá! Game Over (xử lý trong GameManager)");
             GameOver();
         }
+    }
+
+    // (Tuỳ chọn) Restart toàn bộ Scene
+    public void RestartScene()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
