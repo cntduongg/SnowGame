@@ -11197,6 +11197,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+=======
+--- !u!114 &499628290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499628285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 516985de625e18e42bc8e245516e534e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StoneCollisionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  TriggerCandidates: []
+  collisionSound: {fileID: 0}
+  audioSource: {fileID: 0}
+>>>>>>> giang
 --- !u!1001 &504054507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16204,7 +16225,11 @@ Transform:
   m_GameObject: {fileID: 991482929}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: -9.614124, y: 5.29, z: -10}
+=======
+  m_LocalPosition: {x: -16.047907, y: 5.29, z: -10}
+>>>>>>> giang
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20179,7 +20204,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c35491b95ab64c31800e5329c6a6372, type: 3}
+<<<<<<< HEAD
 --- !u!1 &1536913345
+=======
+--- !u!1 &1532170976
+>>>>>>> giang
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20187,6 +20216,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 1536913349}
   - component: {fileID: 1536913348}
   - component: {fileID: 1536913347}
@@ -20194,17 +20224,30 @@ GameObject:
   m_Layer: 0
   m_Name: Stone (16)
   m_TagString: Player
+=======
+  - component: {fileID: 1532170978}
+  - component: {fileID: 1532170977}
+  m_Layer: 0
+  m_Name: CheatSystem
+  m_TagString: Untagged
+>>>>>>> giang
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!50 &1536913346
 Rigidbody2D:
   serializedVersion: 4
+=======
+--- !u!114 &1532170977
+MonoBehaviour:
+>>>>>>> giang
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1536913345}
   m_BodyType: 2
   m_Simulated: 1
@@ -20323,11 +20366,28 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1536913349
+=======
+  m_GameObject: {fileID: 1532170976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d64d10f0bf09104e8eb68682cb19f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cheatSpeedMultiplier: 20
+  cheatJumpMultiplier: 10
+  invincible: 1
+  playerMovement: {fileID: 470829357}
+  playerJump: {fileID: 470829358}
+  gameManager: {fileID: 0}
+  cheatUI: {fileID: 0}
+--- !u!4 &1532170978
+>>>>>>> giang
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1536913345}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.2203756, w: 0.97541517}
@@ -20337,6 +20397,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -25.462}
+=======
+  m_GameObject: {fileID: 1532170976}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 631.2684, y: 12.821784, z: -1.3217973}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> giang
 --- !u!1 &1549719030
 GameObject:
   m_ObjectHideFlags: 0
@@ -42675,6 +42746,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
+=======
+--- !u!114 &2078681098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078681097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 516985de625e18e42bc8e245516e534e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StoneCollisionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  TriggerCandidates: []
+  collisionSound: {fileID: 0}
+  audioSource: {fileID: 0}
+>>>>>>> giang
 --- !u!61 &2078681099
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48388,4 +48480,8 @@ SceneRoots:
   - {fileID: 1853714712}
   - {fileID: 463984697}
   - {fileID: 770935191}
+<<<<<<< HEAD
   - {fileID: 694838401}
+=======
+  - {fileID: 1532170978}
+>>>>>>> giang

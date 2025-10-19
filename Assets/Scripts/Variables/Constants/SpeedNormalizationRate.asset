@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeveloperDescription: Rate at which speed normlizes to default speed when no user
     input is provided.
-  Value: 10
+  Value: 28
