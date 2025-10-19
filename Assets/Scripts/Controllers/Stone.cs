@@ -21,18 +21,18 @@ public class Stone : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log($"Stone: Trigger detected with {other.gameObject.name}");
-        
+
         if (this.triggerCandidates.Contains(other.gameObject))
         {
             Debug.Log("Người chơi chạm vào đá! Invoking StoneCollisionEvent");
             this.StoneCollisionEvent.Invoke();
-            
+
             // Backup: Gọi GameOver trực tiếp nếu UnityEvent không hoạt động
             GameManager gm = FindObjectOfType<GameManager>();
             if (gm != null)
             {
-                Debug.Log("Stone: Calling GameOver directly as backup");
-                gm.GameOver();
+                Debug.Log("Stone: Calling ShowGameOver() directly as backup");
+                gm.ShowGameOver(); // ✅ đúng tên hàm
             }
         }
         else
@@ -56,7 +56,7 @@ public class Stone : MonoBehaviour
             if (gm != null)
             {
                 Debug.Log("Stone: Calling GameOver via collision");
-                gm.GameOver();
+                gm.ShowGameOver();
             }
         }
     }
