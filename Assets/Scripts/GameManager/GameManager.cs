@@ -20,11 +20,8 @@ public class GameManager : MonoBehaviour
     private Vector3 startPosition;      // Lưu vị trí ban đầu của nhân vật
     private Quaternion startRotation;   // Lưu góc xoay ban đầu của nhân vật
     private bool startPositionSaved = false; // Đảm bảo chỉ lưu vị trí ban đầu một lần
-    private CheatSystem cheatSystem;    // Tham chiếu đến hệ thống cheat
     void Start()
     {
-        this.cheatSystem = FindObjectOfType<CheatSystem>();
-
         // Dừng thời gian khi vào game, hiển thị menu
         Time.timeScale = 0f;
 
@@ -133,12 +130,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("Game Over! Quay lại menu.");
-        // Kiểm tra cheat system - nếu bật bất tử thì không game over
-        if (this.cheatSystem != null && this.cheatSystem.ShouldIgnoreGameOver())
-        {
-            Debug.Log("Cheat active - Bỏ qua Game Over!");
-            return;
-        }
+       
         isGameStarted = false;
         Time.timeScale = 0f;
 
