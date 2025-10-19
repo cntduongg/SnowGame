@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject player;           // Nhân vật Player
     public GameObject infoText;         // Text 1
     public GameObject text2;            // Text 2
-    public GameObject instructionText;  // Text hướng dẫn
+    public GameObject instructionText; // Text hướng dẫn
+    public GameObject TimeCounterGo;
 
     [Header("Game Over UI")]
     public GameObject gameOverObject;   // Sprite hoặc UI hiển thị "GAME OVER"
@@ -88,6 +89,13 @@ public class GameManager : MonoBehaviour
             gameOverObject.SetActive(false);
 
         Time.timeScale = 1f;
+
+        // Bắt đầu đếm thời gian khi game bắt đầu
+        if (TimeCounterGo != null)
+        {
+            TimeCounterGo.GetComponent<TimeCounter>().StartTimeCounter();
+        }
+
     }
 
     // Reset player về vị trí ban đầu
@@ -154,6 +162,13 @@ public class GameManager : MonoBehaviour
             ResetPlayerToStart();
             player.SetActive(false);
         }
+
+        // Dừng đếm thời gian khi game over
+        if (TimeCounterGo != null)
+        {
+            TimeCounterGo.GetComponent<TimeCounter>().StopTimeCounter();
+        }
+
     }
 
     // Xử lý va chạm trực tiếp nếu Player có collider
