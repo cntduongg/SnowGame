@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: JumpForce
   m_EditorClassIdentifier: 
   DeveloperDescription: Vertical force applied to player when jumping
-  Value: 11
+  Value: 10
