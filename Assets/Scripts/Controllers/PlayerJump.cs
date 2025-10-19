@@ -37,9 +37,6 @@ public class PlayerJump : MonoBehaviour
             this.Jump(this.JumpForce.Value);
             this.RemainingJumps.ApplyChange(-1);
             this.PlayerJumpEvent.Invoke();
-            
-            // Phát âm thanh nhảy
-            AudioManager.Instance.PlayJumpSound();
 
             #if UNITY_EDITOR
                 Debug.Log(string.Format("PlayerJump.Jump [JumpForce: {0}] [RemainingJumps: {1}]", this.JumpForce.Value, this.RemainingJumps.Value));
