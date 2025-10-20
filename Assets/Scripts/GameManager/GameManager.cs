@@ -136,6 +136,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
         // Khi GameOver thì bấm phím bất kỳ để restart lại
         if (isGameOver && Input.anyKeyDown)
         {
